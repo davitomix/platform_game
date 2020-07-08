@@ -3,8 +3,8 @@ const TestExample = (() => {
   const sum = (a, b) => a + b;
   return {
     example,
-    sum
-  }
+    sum,
+  };
 })();
 
 export default TestExample;

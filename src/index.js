@@ -1,3 +1,4 @@
+/* eslint-disable  no-undef */
 import 'phaser';
 import Model from './Model';
 import config from './Config/config';
@@ -14,7 +15,7 @@ const testExample = TestExample;
 console.log(testExample.example());
 
 class Game extends Phaser.Game {
-  constructor () {
+  constructor() {
     super(config);
     const model = new Model();
     this.globals = { model, bgMusic: null };
@@ -27,5 +28,5 @@ class Game extends Phaser.Game {
     this.scene.start('Boot');
   }
 }
- 
+
 window.game = new Game();
