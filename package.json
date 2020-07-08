@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "test": "jest --watch -o",
-    "prod-build": "webpack --config webpack/prod.js ",
-    "dev-build": "webpack --config webpack/base.js ",
+    "prod-build": "webpack --config webpack/prod.js",
+    "dev-build": "webpack --config webpack/base.js",
     "prod-start": "webpack-dev-server --config webpack/prod.js --open",
     "dev-start": "webpack-dev-server --config webpack/base.js --open"
   },
