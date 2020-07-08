@@ -7,7 +7,12 @@ import PreloaderScene from './Scenes/PreloaderScene';
 import TitleScene from './Scenes/TitleScene';
 import OptionsScene from './Scenes/OptionsScene';
 import CreditsScene from './Scenes/CreditsScene';
- 
+import TestExample from './test-jest';
+
+
+const testExample = TestExample;
+console.log(testExample.example());
+
 class Game extends Phaser.Game {
   constructor () {
     super(config);
@@ -24,5 +29,3 @@ class Game extends Phaser.Game {
 }
  
 window.game = new Game();
-
-console.log('Hello wolrd!');
