@@ -9,3 +9,5 @@ const gameConfig = {
 };
 
 new Phaser.Game(gameConfig);
+
+console.log('holksdaxjba');
