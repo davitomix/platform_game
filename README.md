@@ -35,7 +35,7 @@ $ npm run build
 $ npm run start
 ```
 
-> Open `http://127.0.0.1:8080` using your favourite broswer, if it doesn't open automatically.
+> Open `http://127.0.0.1:8080` using your favorite broswer, if it doesn't open automatically.
 
 ## Automated Tests :space_invader:
 There are no automated tests for this project, they will eventually be added.
