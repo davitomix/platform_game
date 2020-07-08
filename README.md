@@ -1,25 +1,41 @@
-# Weather App.
+# Platform Game.
 
-> This project consist on a simple web app where a user check the current weather of a specific city.
+> This project consist on build game using phaser 3, ES6, Webpack and Jest.
 
 <p align="center">
-  <img src="./weather-main.gif">
+  <img src="./#">
 </p>
 
 ## Built With
+- Phaser 3
 - JS ES6
 - Webpack
 - Module Pattern
-- CSS
+- SASS
+- Jest
 
 ## Live Demo
-[Live Demo Link :rocket:](https://rawcdn.githack.com/davitomix/weather_app/8611a5967540766705f067798bae2fd14ac1c3d0/dist/index.html)
+[Live Demo Link :rocket:](#)
 
 
 ## Usage
-- Download the repo in your computer.
-- Drag and drop the index.html file from the dist folder into your web browser.
-- Enjoy.
+
+> Clone the repository to your local machine
+
+```sh
+$ git clone https://github.com/davitomix/platform_game
+```
+
+> cd into the directory, install dependencies, build and start
+
+```sh
+$ cd platform_game
+$ npm install
+$ npm run build
+$ npm run start
+```
+
+> Open `http://127.0.0.1:8080` using your favourite broswer, if it doesn't open automatically.
 
 ## Automated Tests :space_invader:
 There are no automated tests for this project, they will eventually be added.

@@ -5,11 +5,12 @@
   "private": true,
   "scripts": {
     "test": "jest --watch -o",
-    "build": "webpack --config webpack.config.js",
-    "dev": "webpack-dev-server",
+    "start": "webpack-dev-server",
     "d-watch": "webpack --mode development --watch",
-    "d-build": "webpack --mode development --build",
-    "p-prod": "webpack --mode production --build"
+    "build": "webpack --mode development --build",
+    "p-build": "webpack --mode production --build",
+    "dev": "webpack --mode development",
+    "prod": "webpack --mode production"
   },
   "keywords": [],
   "author": "",
