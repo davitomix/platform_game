@@ -24,3 +24,5 @@ class Game extends Phaser.Game {
 }
  
 window.game = new Game();
+
+console.log('Hello wolrd!');
