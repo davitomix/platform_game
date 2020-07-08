@@ -1,6 +1,9 @@
 import TestExample from '../src/test-jest';
-let test = TestExample.example();
 
 it('should return true', () => {
-  expect(test).toBe(true);
+  expect(TestExample.example()).toBe(true);
+});
+
+it('adds 1 + 2 to equal 3', () => {
+  expect(TestExample.sum(1, 2)).toBe(3);
 });

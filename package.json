@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "jest": "jest",
-    "test": "jest --watch -o",
+    "test": "jest -o",
+    "test-watch": "jest --watch -o",
     "dev": "webpack --mode development",
     "prod": "webpack --mode production",
     "dev-start": "webpack-dev-server --mode development --open",
