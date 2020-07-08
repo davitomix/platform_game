@@ -1,3 +1,4 @@
+/* eslint-disable  no-undef */
 import 'phaser';
 import Model from './Model';
 import config from './Config/config';
@@ -7,9 +8,14 @@ import PreloaderScene from './Scenes/PreloaderScene';
 import TitleScene from './Scenes/TitleScene';
 import OptionsScene from './Scenes/OptionsScene';
 import CreditsScene from './Scenes/CreditsScene';
- 
+import TestExample from './test-jest';
+
+
+const testExample = TestExample;
+console.log(testExample.example());
+
 class Game extends Phaser.Game {
-  constructor () {
+  constructor() {
     super(config);
     const model = new Model();
     this.globals = { model, bgMusic: null };
@@ -22,7 +28,5 @@ class Game extends Phaser.Game {
     this.scene.start('Boot');
   }
 }
- 
-window.game = new Game();
 
-console.log('Hello wolrd!');
+window.game = new Game();
