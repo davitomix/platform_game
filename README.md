@@ -31,8 +31,7 @@ $ git clone https://github.com/davitomix/platform_game
 ```sh
 $ cd platform_game
 $ npm install
-$ npm run build
-$ npm run start
+$ npm run dev-start
 ```
 
 > Open `http://127.0.0.1:8080` using your favorite broswer, if it doesn't open automatically.
