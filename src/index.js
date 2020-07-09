@@ -1,5 +1,4 @@
 /* eslint-disable  no-undef */
-
 import 'phaser';
 import Model from './Model';
 import config from './Config/config';
@@ -10,8 +9,6 @@ import TitleScene from './Scenes/TitleScene';
 import OptionsScene from './Scenes/OptionsScene';
 import CreditsScene from './Scenes/CreditsScene';
 import './style/main.scss';
-// import WarmUp from './warm-up';
-
 
 class Game extends Phaser.Game {
   constructor() {
@@ -29,8 +26,3 @@ class Game extends Phaser.Game {
 }
 
 window.game = new Game();
-
-setTimeout(() => {
-  const gameCanvas = document.querySelector('canvas');
-  console.log(gameCanvas);
-}, 10000);
