@@ -3,6 +3,17 @@ import 'phaser';
 export default {
   type: Phaser.AUTO,
   parent: 'game-container',
-  width: 800,
-  height: 600,
+  scale: {
+    mode: Phaser.Scale.FIT,
+    width: 800,
+    height: 600,
+  },
+  title: 'Prince Treasure',
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: { y: 300 },
+      debug: false,
+    },
+  },
 };

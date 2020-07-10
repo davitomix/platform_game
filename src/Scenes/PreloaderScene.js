@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -10,10 +10,8 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   preload() {
-    // add logo image
     this.add.image(400, 200, 'logo');
 
-    // display progress bar
     const progressBar = this.add.graphics();
     const progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
@@ -54,20 +52,17 @@ export default class PreloaderScene extends Phaser.Scene {
     });
     assetText.setOrigin(0.5, 0.5);
 
-    // update progress bar
-    this.load.on('progress', (value) => {
-      percentText.setText(`${parseInt(value * 100)}%`);
+    this.load.on('progress', value => {
+      percentText.setText(`${parseInt(value * 100, 0)}%`);
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
       progressBar.fillRect(250, 280, 300 * value, 30);
     });
 
-    // update file progress text
-    this.load.on('fileprogress', (file) => {
+    this.load.on('fileprogress', file => {
       assetText.setText(`Loading asset: ${file.key}`);
     });
 
-    // remove progress bar when complete
     this.load.on('complete', () => {
       progressBar.destroy();
       progressBox.destroy();
@@ -79,16 +74,36 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
-    // load assets needed in our game
     this.load.image('blueButton1', 'assets/ui/blue_button02.png');
     this.load.image('blueButton2', 'assets/ui/blue_button03.png');
-    this.load.image('phaserLogo', 'assets/logo.png');
     this.load.image('box', 'assets/ui/grey_box.png');
     this.load.image('checkedBox', 'assets/ui/blue_boxCheckmark.png');
-    this.load.audio('bgMusic', ['assets/TownTheme.mp3']);
+
+    this.load.image('bomb', 'assets/bomb.png');
+    this.load.image('dragonblue', 'assets/dragonblue.png');
+    this.load.image('blueCrystal', 'assets/blueCrystal.png');
+    this.load.image('pinkCrystal', 'assets/pinkCrystal.png');
+    this.load.image('yellowCrystal', 'assets/yellowCrystal.png');
+    this.load.image('background', 'assets/background.png');
+
+    this.load.image('ground', 'assets/ground.png');
+    this.load.image('platforms', 'assets/platforms.png');
+    this.load.spritesheet('king', 'assets/king.png', {
+      frameWidth: 17,
+      frameHeight: 24,
+    });
+
+    this.load.audio('bgMusic', ['assets/gameMusic.mp3']);
+    this.load.audio('jumpSound', ['assets/phaserUp4.mp3']);
+    this.load.audio('downSound', ['assets/phaserDown2.mp3']);
+    this.load.audio('catchStar', ['assets/catchStar.mp3']);
+    this.load.audio('bombSound', ['assets/8bit_bomb_explosion.wav']);
   }
 
   ready() {
-    this.scene.start('Title');
+    this.readyCount += 1;
+    if (this.readyCount === 2) {
+      this.scene.start('Title');
+    }
   }
 }
