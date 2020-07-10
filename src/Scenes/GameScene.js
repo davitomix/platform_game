@@ -220,7 +220,7 @@ export default class GameScene extends Phaser.Scene {
         child.allowGravity = false;
       });
 
-      const dragon = this.dragons.create(x, 16, 'dragonblue');
+      const dragon = this.dragons.create(x, 16, 'dragonblack');
       dragon.setBounce(1);
       dragon.setCollideWorldBounds(true);
       dragon.setVelocity(Phaser.Math.Between(-200, 200), 20);

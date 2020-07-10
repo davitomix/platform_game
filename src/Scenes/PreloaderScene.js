@@ -80,7 +80,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('checkedBox', 'assets/ui/blue_boxCheckmark.png');
 
     this.load.image('bomb', 'assets/bomb.png');
-    this.load.image('dragonblue', 'assets/dragonblue.png');
+    this.load.image('dragonblack', 'assets/dragonblack.png');
     this.load.image('blueCrystal', 'assets/blueCrystal.png');
     this.load.image('pinkCrystal', 'assets/pinkCrystal.png');
     this.load.image('yellowCrystal', 'assets/yellowCrystal.png');
@@ -90,7 +90,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('platforms', 'assets/platforms.png');
     this.load.spritesheet('king', 'assets/king.png', {
       frameWidth: 17,
-      frameHeight: 24,
+      frameHeight: 23,
     });
 
     this.load.audio('bgMusic', ['assets/gameMusic.mp3']);
