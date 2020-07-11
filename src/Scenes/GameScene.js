@@ -12,9 +12,9 @@ export default class GameScene extends Phaser.Scene {
   constructor() {
     super('Game');
     this.player = null;
-    this.blueCrystals = null;
-    this.pinkCrystals = null;
-    this.yellowCrystals = null;
+    this.silvercoins = null;
+    this.stars = null;
+    this.goldcoins = null;
     this.bombs = null;
     this.monsters = null;
     this.platforms = null;
@@ -98,13 +98,13 @@ export default class GameScene extends Phaser.Scene {
       this.bombSound.mute = false;
     }
 
-    this.blueCrystals = this.physics.add.group({
-      key: 'blueCrystal',
+    this.silvercoins = this.physics.add.group({
+      key: 'silvercoin',
       repeat: 2,
       setXY: { x: 450, y: 0, stepX: 50 },
     });
 
-    this.blueCrystals.children.iterate(child => {
+    this.silvercoins.children.iterate(child => {
       child.setBounce(1);
       child.setCollideWorldBounds(true);
       child.setVelocity(Phaser.Math.Between(-200, 200), 20);
@@ -113,8 +113,8 @@ export default class GameScene extends Phaser.Scene {
 
     this.bombs = this.physics.add.group();
     this.monsters = this.physics.add.group();
-    this.pinkCrystals = this.physics.add.group();
-    this.yellowCrystals = this.physics.add.group();
+    this.stars = this.physics.add.group();
+    this.goldcoins = this.physics.add.group();
 
     this.scoreText = this.add.text(16, 16, 'Score: 0', {
       fontSize: '32px',
@@ -127,28 +127,28 @@ export default class GameScene extends Phaser.Scene {
     });
 
     this.physics.add.collider(this.player, this.platforms);
-    this.physics.add.collider(this.blueCrystals, this.platforms);
+    this.physics.add.collider(this.silvercoins, this.platforms);
     this.physics.add.collider(this.bombs, this.platforms);
     this.physics.add.collider(this.monsters, this.platforms);
-    this.physics.add.collider(this.monsters, this.blueCrystals);
-    this.physics.add.collider(this.monsters, this.pinkCrystals);
-    this.physics.add.collider(this.monsters, this.yellowCrystals);
-    this.physics.add.collider(this.pinkCrystals, this.platforms);
-    this.physics.add.collider(this.yellowCrystals, this.platforms);
+    this.physics.add.collider(this.monsters, this.silvercoins);
+    this.physics.add.collider(this.monsters, this.stars);
+    this.physics.add.collider(this.monsters, this.goldcoins);
+    this.physics.add.collider(this.stars, this.platforms);
+    this.physics.add.collider(this.goldcoins, this.platforms);
     this.physics.add.collider(this.bombs, this.monsters);
     this.physics.add.collider(this.bombs);
-    this.physics.add.collider(this.blueCrystals);
-    this.physics.add.collider(this.pinkCrystals);
-    this.physics.add.collider(this.yellowCrystals);
-    this.physics.add.collider(this.blueCrystals, this.pinkCrystals);
-    this.physics.add.collider(this.blueCrystals, this.yellowCrystals);
-    this.physics.add.collider(this.pinkCrystals, this.yellowCrystals);
+    this.physics.add.collider(this.silvercoins);
+    this.physics.add.collider(this.stars);
+    this.physics.add.collider(this.goldcoins);
+    this.physics.add.collider(this.silvercoins, this.stars);
+    this.physics.add.collider(this.silvercoins, this.goldcoins);
+    this.physics.add.collider(this.stars, this.goldcoins);
 
-    this.physics.add.overlap(this.player, this.blueCrystals, this.collectCrystals, null, this);
+    this.physics.add.overlap(this.player, this.silvercoins, this.collectCrystals, null, this);
 
-    this.physics.add.overlap(this.player, this.pinkCrystals, this.specialCrystals, null, this);
+    this.physics.add.overlap(this.player, this.stars, this.specialCrystals, null, this);
 
-    this.physics.add.overlap(this.player, this.yellowCrystals, this.specialCrystals, null, this);
+    this.physics.add.overlap(this.player, this.goldcoins, this.specialCrystals, null, this);
 
     this.physics.add.collider(this.player, this.bombs, this.hitBomb, null, this);
 
@@ -210,9 +210,9 @@ export default class GameScene extends Phaser.Scene {
 
     const x = this.player.x < 400 ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
 
-    if (this.blueCrystals.countActive(true) === 0) {
+    if (this.silvercoins.countActive(true) === 0) {
       this.gameRound += 1;
-      this.blueCrystals.children.iterate(child => {
+      this.silvercoins.children.iterate(child => {
         child.enableBody(true, x, 100, true, true);
         child.setBounce(1);
         child.setCollideWorldBounds(true);
@@ -227,17 +227,17 @@ export default class GameScene extends Phaser.Scene {
       monster.allowGravity = false;
 
       if (this.gameRound % 2 === 0) {
-        const yellowCrystal = this.yellowCrystals.create(x, 16, 'yellowCrystal');
-        yellowCrystal.setBounce(1);
-        yellowCrystal.setCollideWorldBounds(true);
-        yellowCrystal.setVelocity(Phaser.Math.Between(-200, 200), 20);
-        yellowCrystal.allowGravity = false;
+        const goldcoin = this.goldcoins.create(x, 16, 'goldcoin');
+        goldcoin.setBounce(1);
+        goldcoin.setCollideWorldBounds(true);
+        goldcoin.setVelocity(Phaser.Math.Between(-200, 200), 20);
+        goldcoin.allowGravity = false;
 
-        const pinkCrystal = this.pinkCrystals.create(x, 16, 'pinkCrystal');
-        pinkCrystal.setBounce(1);
-        pinkCrystal.setCollideWorldBounds(true);
-        pinkCrystal.setVelocity(Phaser.Math.Between(-200, 200), 20);
-        pinkCrystal.allowGravity = false;
+        const star = this.stars.create(x, 16, 'star');
+        star.setBounce(1);
+        star.setCollideWorldBounds(true);
+        star.setVelocity(Phaser.Math.Between(-200, 200), 20);
+        star.allowGravity = false;
 
         const bomb = this.bombs.create(x, 16, 'bomb');
         bomb.setBounce(1);
@@ -247,11 +247,11 @@ export default class GameScene extends Phaser.Scene {
       }
 
       if (this.gameRound % 5 === 0) {
-        const pinkCrystal = this.pinkCrystals.create(x, 16, 'pinkCrystal');
-        pinkCrystal.setBounce(1);
-        pinkCrystal.setCollideWorldBounds(true);
-        pinkCrystal.setVelocity(Phaser.Math.Between(-200, 200), 20);
-        pinkCrystal.allowGravity = false;
+        const star = this.stars.create(x, 16, 'star');
+        star.setBounce(1);
+        star.setCollideWorldBounds(true);
+        star.setVelocity(Phaser.Math.Between(-200, 200), 20);
+        star.allowGravity = false;
       }
     }
   }
@@ -303,7 +303,7 @@ export default class GameScene extends Phaser.Scene {
   specialCrystals(player, crystal) {
     crystal.destroy();
     this.catchStar.play();
-    if (crystal.texture.key === 'pinkCrystal') {
+    if (crystal.texture.key === 'star') {
       this.score += 100;
     } else {
       this.score += 60;
