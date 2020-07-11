@@ -54,27 +54,27 @@ export default class GameScene extends Phaser.Scene {
     this.platforms.create(704, 314, 'platforms');
     this.platforms.create(704, 164, 'platforms');
 
-    this.player = this.physics.add.sprite(0, 0, 'king').setScale(1.3);
+    this.player = this.physics.add.sprite(0, 0, 'soldier').setScale(1.3);
 
     this.player.setBounce(0.2);
     this.player.setCollideWorldBounds(true);
 
     this.anims.create({
       key: 'run',
-      frames: this.anims.generateFrameNumbers('king', { start: 14, end: 17 }),
+      frames: this.anims.generateFrameNumbers('soldier', { start: 14, end: 17 }),
       frameRate: 10,
       repeat: -1,
     });
 
     this.anims.create({
       key: 'turn',
-      frames: [{ key: 'king', frame: 0 }],
+      frames: [{ key: 'soldier', frame: 0 }],
       frameRate: 10,
     });
 
     this.anims.create({
       key: 'swoosh',
-      frames: this.anims.generateFrameNumbers('king', { start: 8, end: 12 }),
+      frames: this.anims.generateFrameNumbers('soldier', { start: 8, end: 12 }),
       frameRate: 10,
     });
 
