@@ -1,32 +1,15 @@
-/* eslint-disable  no-undef */
-import 'phaser';
-import Model from './Model';
-import config from './Config/config';
-import GameScene from './Scenes/GameScene';
-import BootScene from './Scenes/BootScene';
-import PreloaderScene from './Scenes/PreloaderScene';
-import TitleScene from './Scenes/TitleScene';
-import OptionsScene from './Scenes/OptionsScene';
-import CreditsScene from './Scenes/CreditsScene';
-import TestExample from './test-jest';
+import './style/main.scss';
+import Game from './game-init';
 
 
-const testExample = TestExample;
-console.log(testExample.example());
+const gameInit = () => {
+  window.game = new Game();
+};
 
-class Game extends Phaser.Game {
-  constructor() {
-    super(config);
-    const model = new Model();
-    this.globals = { model, bgMusic: null };
-    this.scene.add('Boot', BootScene);
-    this.scene.add('Preloader', PreloaderScene);
-    this.scene.add('Title', TitleScene);
-    this.scene.add('Options', OptionsScene);
-    this.scene.add('Credits', CreditsScene);
-    this.scene.add('Game', GameScene);
-    this.scene.start('Boot');
-  }
-}
+const start = () => {
+  // Await sequences
+  // display - Leaderboard
+  gameInit();
+};
 
-window.game = new Game();
+start();
