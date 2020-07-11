@@ -16,7 +16,7 @@ export default class GameScene extends Phaser.Scene {
     this.pinkCrystals = null;
     this.yellowCrystals = null;
     this.bombs = null;
-    this.dragons = null;
+    this.monsters = null;
     this.platforms = null;
     this.cursors = null;
     this.scoreText = null;
@@ -112,7 +112,7 @@ export default class GameScene extends Phaser.Scene {
     });
 
     this.bombs = this.physics.add.group();
-    this.dragons = this.physics.add.group();
+    this.monsters = this.physics.add.group();
     this.pinkCrystals = this.physics.add.group();
     this.yellowCrystals = this.physics.add.group();
 
@@ -129,13 +129,13 @@ export default class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.player, this.platforms);
     this.physics.add.collider(this.blueCrystals, this.platforms);
     this.physics.add.collider(this.bombs, this.platforms);
-    this.physics.add.collider(this.dragons, this.platforms);
-    this.physics.add.collider(this.dragons, this.blueCrystals);
-    this.physics.add.collider(this.dragons, this.pinkCrystals);
-    this.physics.add.collider(this.dragons, this.yellowCrystals);
+    this.physics.add.collider(this.monsters, this.platforms);
+    this.physics.add.collider(this.monsters, this.blueCrystals);
+    this.physics.add.collider(this.monsters, this.pinkCrystals);
+    this.physics.add.collider(this.monsters, this.yellowCrystals);
     this.physics.add.collider(this.pinkCrystals, this.platforms);
     this.physics.add.collider(this.yellowCrystals, this.platforms);
-    this.physics.add.collider(this.bombs, this.dragons);
+    this.physics.add.collider(this.bombs, this.monsters);
     this.physics.add.collider(this.bombs);
     this.physics.add.collider(this.blueCrystals);
     this.physics.add.collider(this.pinkCrystals);
@@ -152,7 +152,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.physics.add.collider(this.player, this.bombs, this.hitBomb, null, this);
 
-    this.physics.add.overlap(this.player, this.dragons, this.takePoints, null, this);
+    this.physics.add.overlap(this.player, this.monsters, this.takePoints, null, this);
   }
 
   update(delta) {
@@ -220,11 +220,11 @@ export default class GameScene extends Phaser.Scene {
         child.allowGravity = false;
       });
 
-      const dragon = this.dragons.create(x, 16, 'dragonblack');
-      dragon.setBounce(1);
-      dragon.setCollideWorldBounds(true);
-      dragon.setVelocity(Phaser.Math.Between(-200, 200), 20);
-      dragon.allowGravity = false;
+      const monster = this.monsters.create(x, 16, 'monster');
+      monster.setBounce(1);
+      monster.setCollideWorldBounds(true);
+      monster.setVelocity(Phaser.Math.Between(-200, 200), 20);
+      monster.allowGravity = false;
 
       if (this.gameRound % 2 === 0) {
         const yellowCrystal = this.yellowCrystals.create(x, 16, 'yellowCrystal');
@@ -232,6 +232,12 @@ export default class GameScene extends Phaser.Scene {
         yellowCrystal.setCollideWorldBounds(true);
         yellowCrystal.setVelocity(Phaser.Math.Between(-200, 200), 20);
         yellowCrystal.allowGravity = false;
+
+        const pinkCrystal = this.pinkCrystals.create(x, 16, 'pinkCrystal');
+        pinkCrystal.setBounce(1);
+        pinkCrystal.setCollideWorldBounds(true);
+        pinkCrystal.setVelocity(Phaser.Math.Between(-200, 200), 20);
+        pinkCrystal.allowGravity = false;
 
         const bomb = this.bombs.create(x, 16, 'bomb');
         bomb.setBounce(1);
@@ -283,12 +289,12 @@ export default class GameScene extends Phaser.Scene {
     );
   }
 
-  takePoints(player, dragon) {
+  takePoints(player, monster) {
     if (this.player.anims.currentAnim.key === 'swoosh') {
-      dragon.destroy();
+      monster.destroy();
     } else {
       const x = this.player.x < 400 ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
-      dragon.x = x;
+      monster.x = x;
       this.score -= 50;
       this.scoreText.setText(`Score: ${this.score}`);
     }

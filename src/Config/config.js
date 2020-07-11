@@ -8,7 +8,7 @@ export default {
     width: 800,
     height: 600,
   },
-  title: 'Prince Treasure',
+  title: 'Soldier in the Space',
   physics: {
     default: 'arcade',
     arcade: {
