@@ -1,9 +1,7 @@
-import DomObj from "./dom-utils";
+import DomObj from './dom-utils';
 
 const Api = (() => {
   const dommer = DomObj;
-  const API_URL = 'https://api.openweathermap.org/data/2.5/weather';
-  const GAMEID = 'Ydrq34GZfJXn16CLPVYi';
 
   const saveScore = async (playerName, playerScore) => {
     const scoreData = {
