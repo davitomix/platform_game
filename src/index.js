@@ -3,8 +3,6 @@ import Game from './game-init';
 import Api from './api';
 
 const apiObj = Api;
-
-// ----------------------------------
 const userInputDiv = document.getElementById('user-input');
 const gameContainer = document.getElementById('game-container');
 
