@@ -1,4 +1,7 @@
+import DomObj from "./dom-utils";
+
 const Api = (() => {
+  const dommer = DomObj;
   const API_URL = 'https://api.openweathermap.org/data/2.5/weather';
   const GAMEID = 'Ydrq34GZfJXn16CLPVYi';
 
@@ -41,9 +44,9 @@ const Api = (() => {
       const data = await response.json();
       sortScores(data.result);
       const filteredScores = data.result.filter((v, i, a) => a.findIndex(t => t.user === v.user) === i);
-      console.log(filteredScores);
+      dommer.injectScores(filteredScores);
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 
