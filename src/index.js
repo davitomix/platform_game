@@ -15,7 +15,7 @@ const set = (item, value) => {
   return get();
 };
 
-apiObj.getScores();
+apiObj.getScores(fetch);
 
 const startGame = () => {
   gameContainer.style.display = 'flex';

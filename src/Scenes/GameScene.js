@@ -271,7 +271,7 @@ export default class GameScene extends Phaser.Scene {
     if (this.score > this.highScore) {
       this.sys.game.globals.highScore = this.score;
       set(this.score);
-      apiObj.saveScore(this.playerName, this.score);
+      apiObj.saveScore(this.playerName, this.score, fetch);
     }
     this.gameOver = true;
 
