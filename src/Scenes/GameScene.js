@@ -1,7 +1,9 @@
 import 'phaser';
 import config from '../Config/config';
 import Button from '../Objects/Button';
+import Api from '../api';
 
+const apiObj = Api;
 const get = () => JSON.parse(localStorage.getItem('Score'));
 const set = value => {
   localStorage.setItem('Score', value);
@@ -35,7 +37,11 @@ export default class GameScene extends Phaser.Scene {
     this.gameOver = false;
     this.soundOn = this.sys.game.globals.model.soundOn;
 
-    this.highScore = this.sys.game.globals.highScore;
+    if (this.highScore === null) {
+      this.highScore = 0;
+    } else {
+      this.highScore = this.sys.game.globals.highScore;
+    }
     this.playerName = this.sys.game.globals.playerName;
 
     this.add.image(400, 300, 'background');
@@ -100,7 +106,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.silvercoins = this.physics.add.group({
       key: 'silvercoin',
-      repeat: 2,
+      repeat: 1,
       setXY: { x: 450, y: 0, stepX: 50 },
     });
 
@@ -118,12 +124,12 @@ export default class GameScene extends Phaser.Scene {
 
     this.scoreText = this.add.text(16, 16, 'Score: 0', {
       fontSize: '32px',
-      fill: '#000',
+      fill: '#fff',
     });
 
     this.highscoreText = this.add.text(380, 16, `High Score: ${this.highScore}`, {
       fontSize: '32px',
-      fill: '#000',
+      fill: '#fff',
     });
 
     this.physics.add.collider(this.player, this.platforms);
@@ -233,11 +239,11 @@ export default class GameScene extends Phaser.Scene {
         goldcoin.setVelocity(Phaser.Math.Between(-200, 200), 20);
         goldcoin.allowGravity = false;
 
-        const star = this.stars.create(x, 16, 'star');
-        star.setBounce(1);
-        star.setCollideWorldBounds(true);
-        star.setVelocity(Phaser.Math.Between(-200, 200), 20);
-        star.allowGravity = false;
+        const silvercoin = this.silvercoins.create(x, 16, 'silvercoin');
+        silvercoin.setBounce(1);
+        silvercoin.setCollideWorldBounds(true);
+        silvercoin.setVelocity(Phaser.Math.Between(-200, 200), 20);
+        silvercoin.allowGravity = false;
 
         const bomb = this.bombs.create(x, 16, 'bomb');
         bomb.setBounce(1);
@@ -265,6 +271,7 @@ export default class GameScene extends Phaser.Scene {
     if (this.score > this.highScore) {
       this.sys.game.globals.highScore = this.score;
       set(this.score);
+      apiObj.saveScore(this.playerName, this.score);
     }
     this.gameOver = true;
 
