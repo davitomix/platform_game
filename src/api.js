@@ -26,6 +26,10 @@ const Api = (() => {
     }
   };
 
+  const sortScores = scores => {
+    scores.sort((a, b) => b.score - a.score);
+  };
+
   const getScores = async () => {
     try {
       const response = await fetch(
@@ -35,7 +39,9 @@ const Api = (() => {
         },
       );
       const data = await response.json();
-      console.log(data);
+      sortScores(data.result);
+      const filteredScores = data.result.filter((v, i, a) => a.findIndex(t => t.user === v.user) === i);
+      console.log(filteredScores);
     } catch (error) {
       console.log(error);
     }
