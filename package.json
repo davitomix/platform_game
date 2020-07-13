@@ -19,8 +19,7 @@
     "prod-build": "webpack --mode production --build",
     "p-build": "webpack --config webpack/prod.js",
     "d-build": "webpack --config webpack/base.js",
-    "dev-watch": "webpack --mode development --watch",
-    "heroku-postbuild": "webpack -p --config ./webpack/prod.js --progress"
+    "dev-watch": "webpack --mode development --watch"
   },
   "keywords": [],
   "author": "",
