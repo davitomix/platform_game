@@ -18,6 +18,24 @@ body {
   height: 100vh;
 }
 
+.scoreboard-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .score-box {
+    border: 1px solid gray;
+    background-color: ivory;
+    width: 25%;
+    height: 100%;
+
+    table {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
 .game-container {
   background-color: lightslategray;
   display: none;
@@ -26,36 +44,23 @@ body {
   flex-direction: column;
   width: 100%;
   height: 100%;
+
   .title-cont {
     text-align: center;
     width: 800px;
     height: calc(((100% - 600px) / 2) / 2);
     background-color: lightgray;
   }
+
   .game-cont {
     width: 800px;
     height: 600px;
   }
+
   .scoreboard-cont {
     width: 800px;
     height: calc((100% - 600px) / 1.33);
     background-color: lightgray;
-  }
-}
-
-.scoreboard-cont {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .score-box {
-    border: 1px solid gray;
-    background-color: ivory;
-    width: 25%;
-    height: 100%;
-    table {
-      width: 100%;
-      height: 100%;
-    }
   }
 }
 

@@ -41,8 +41,11 @@ const Api = (() => {
       );
       const data = await response.json();
       sortScores(data.result);
+      /* eslint-disable  max-len */
       const filteredScores = data.result.filter((v, i, a) => a.findIndex(t => t.user === v.user) === i);
+      /* eslint-enable  max-len */
       dommer.injectScores(filteredScores);
+      return response;
     } catch (error) {
       return error;
     }
