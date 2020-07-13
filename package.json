@@ -1,6 +1,10 @@
 {
   "name": "platform_game",
   "version": "1.0.0",
+  "engines": {
+    "node": "13.x",
+    "npm": "6.x"
+  },
   "description": "",
   "private": true,
   "scripts": {
