@@ -44,11 +44,14 @@ const Api = (() => {
           body: JSON.stringify(scoreData),
         },
       );
-      const data = await response.json();
-      getScores(fetch).then(scores => dommer.injectScores(scores.result));
-      console.log(data);
+      if (response.ok) {
+        const data = await response.json();
+        getScores(fetch).then(scores => dommer.injectScores(scores.result));
+        return data;
+      }
+      return response;
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 

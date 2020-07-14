@@ -21,7 +21,7 @@ it('getScores should return the scores from the Score API', () => {
     return result;
   };
   apiObj.getScores(fakeFetch).then(result => {
-    expect(result).toStrictEqual({ result: [{ score: 1250, user: 'Dev' }] });
+    expect(result).toEqual({ result: [{ score: 1250, user: 'Dev' }] });
   });
   expect(fakeFetchCall).toBe(true);
 });
@@ -37,7 +37,7 @@ it('saveScore should save the new score', () => {
     return result;
   };
   apiObj.saveScore('David', 20, fakeFetch).then(result => {
-    expect(result).toStrictEqual({ result: 'Leaderboard score created correctly.' });
+    expect(result).toEqual({ result: 'Leaderboard score created correctly.' });
   });
   expect(fakeFetchCall).toBe(true);
 });
