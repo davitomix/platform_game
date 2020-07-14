@@ -8,7 +8,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "node project.bundle.js",
+    "start": "node ./build/project.bundle.js",
     "jest": "jest",
     "test": "jest -o",
     "test-watch": "jest --watch -o",
