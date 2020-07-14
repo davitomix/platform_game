@@ -8,7 +8,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "node ./build/project.bundle.js",
+    "start": "node server.js",
+    "heroku-postbuild": "webpack -p",
     "jest": "jest",
     "test": "jest -o",
     "test-watch": "jest --watch -o",
@@ -55,6 +56,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "http-server": "^0.12.3",
     "phaser": "^3.23.0"
   }
