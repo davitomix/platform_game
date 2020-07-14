@@ -2,7 +2,7 @@ import 'phaser';
 
 export default {
   type: Phaser.AUTO,
-  parent: 'game-container',
+  parent: 'game-boxing',
   scale: {
     mode: Phaser.Scale.FIT,
     width: 800,
