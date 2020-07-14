@@ -16,7 +16,7 @@
 ## Live Demo
 
 - [Heroku :rocket:](https://shielded-depths-61575.herokuapp.com)
-- [Githack ](https://rawcdn.githack.com/davitomix/platform_game/933217497327bde9ba3bea55edd5e09b203e2561/index.html)
+- [Githack :zap:](https://rawcdn.githack.com/davitomix/platform_game/933217497327bde9ba3bea55edd5e09b203e2561/index.html)
 
 ## Usage
 
