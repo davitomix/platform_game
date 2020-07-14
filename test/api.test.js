@@ -41,3 +41,8 @@ it('saveScore should save the new score', () => {
   });
   expect(fakeFetchCall).toBe(true);
 });
+
+it('expects API Key to be present', () => {
+  const Id = apiObj.idApi;
+  expect(Id).toEqual('Ydrq34GZfJXn16CLPVYi');
+});

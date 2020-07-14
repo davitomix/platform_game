@@ -2,6 +2,7 @@ import DomObj from './dom-utils';
 
 const Api = (() => {
   const dommer = DomObj;
+  const idApi = 'Ydrq34GZfJXn16CLPVYi';
 
   const sortScores = scores => {
     scores.sort((a, b) => b.score - a.score);
@@ -10,7 +11,7 @@ const Api = (() => {
   const getScores = async (fetch) => {
     try {
       const response = await fetch(
-        'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Ydrq34GZfJXn16CLPVYi/scores',
+        `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${idApi}/scores`,
         {
           method: 'GET',
         },
@@ -34,7 +35,7 @@ const Api = (() => {
     };
     try {
       const response = await fetch(
-        'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Ydrq34GZfJXn16CLPVYi/scores',
+        `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${idApi}/scores`,
         {
           method: 'POST',
           headers: {
@@ -58,6 +59,7 @@ const Api = (() => {
   return {
     saveScore,
     getScores,
+    idApi,
   };
 })();
 
